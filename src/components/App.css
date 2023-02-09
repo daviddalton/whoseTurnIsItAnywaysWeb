@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&family=Ubuntu:wght@700&display=swap');
+
+.App {
+  text-align: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.title {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.winner {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 125px;
+}
+
+.winner-name {
+  color: red;
+}

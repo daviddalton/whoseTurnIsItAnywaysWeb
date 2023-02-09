@@ -16,17 +16,28 @@ function HomePage() {
 
     const [candidates, setCandidates] = React.useState<Candidate[]>([])
 
-    const whoIsUp = 'Emma'
-    const emmasCount = 0
-    const davidsCount = 1
-    const emmaTotalDollarsSpent = '$0'
-    const davidTotalDollarsSpent = '$52.45'
+    let whoIsUp = 'Emma'
 
     React.useEffect(() => {
         if (candidates.length < 1) {
             return subscribeToCandidateList(setCandidates);
         }
     })
+
+    if (candidates.length > 0) {
+        if (candidates[0].timesPayed > candidates[1].timesPayed) {
+            whoIsUp = candidates[1].name
+        } else if (candidates[0].timesPayed === candidates[1].timesPayed) {
+            if (candidates[0].totalDollarsSpent > candidates[1].totalDollarsSpent) {
+                whoIsUp = candidates[1].name
+            } else {
+                whoIsUp = candidates[0].name
+            }
+        } else {
+            whoIsUp = candidates[0].name
+        }
+    }
+
 
     return (
         <div>

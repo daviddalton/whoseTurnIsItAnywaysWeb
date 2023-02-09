@@ -16,7 +16,7 @@ function HomePage() {
 
     const [candidates, setCandidates] = React.useState<Candidate[]>([])
 
-    let whoIsUp = 'Emma'
+    let whoIsUp = ''
 
     React.useEffect(() => {
         if (candidates.length < 1) {

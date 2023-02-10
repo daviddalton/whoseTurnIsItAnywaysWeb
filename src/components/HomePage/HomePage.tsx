@@ -25,24 +25,22 @@ function HomePage() {
     })
 
     if (candidates.length > 0) {
-        if (candidates[0].timesPayed > candidates[1].timesPayed) {
-            whoIsUp = candidates[1].name
-        } else if (candidates[0].timesPayed === candidates[1].timesPayed) {
-            if (candidates[0].totalDollarsSpent > candidates[1].totalDollarsSpent) {
-                whoIsUp = candidates[1].name
-            } else {
-                whoIsUp = candidates[0].name
-            }
+        let sortedCandidates = candidates.sort((a, b) => a.timesPayed - b.timesPayed)
+
+        const lowestTimesPayed = sortedCandidates[0].timesPayed;
+        const filteredCandidates = candidates.filter(c => c.timesPayed === lowestTimesPayed)
+        if (filteredCandidates.length > 1) {
+            const sortedFilteredCandidates = filteredCandidates.sort((a, b) => a.totalDollarsSpent - b.totalDollarsSpent)
+            whoIsUp = sortedFilteredCandidates[0].name
         } else {
-            whoIsUp = candidates[0].name
+            whoIsUp = sortedCandidates[0].name
         }
     }
-
 
     return (
         <div>
             <Container sx={{display: 'flex', justifyContent: 'space-between'}}>
-                <h1 className={"title"}>Who's Turn Is It Anyways</h1>
+                <h1 className={"title"}>Whose Turn Is It Anyway</h1>
                 <Button sx={{color: 'navy', fontFamily: 'Ubuntu'}}>Sign In</Button>
             </Container>
             <Container sx={{display: 'flex', justifyContent: 'center', paddingTop: '50px'}}>
@@ -50,24 +48,19 @@ function HomePage() {
             </Container>
             <Container sx={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
                 <Grid container spacing={4} sx={{justifyContent: 'center'}}>
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card>
-                            <CardHeader title={candidates[0]?.name} />
-                            <CardContent>
-                                <h3>Times Bought: <span>{candidates[0]?.timesPayed}</span></h3>
-                                <h3>Dollars Spent: <span>${candidates[0]?.totalDollarsSpent}</span></h3>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card>
-                            <CardHeader title={candidates[1]?.name} />
-                            <CardContent>
-                                <h3>Times bought: <span>{candidates[1]?.timesPayed}</span></h3>
-                                <h3>Dollars Spent: <span>${candidates[1]?.totalDollarsSpent}</span></h3>
-                            </CardContent>
-                        </Card>
-                    </Grid>
+                {candidates.map((candidate, index) => {
+                    return (
+                        <Grid item xs={12} sm={6} md={4}>
+                            <Card sx={{ boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)' }}>
+                                <CardHeader title={candidate.name} />
+                                <CardContent>
+                                    <h3>Times Bought: <span>{candidate.timesPayed}</span></h3>
+                                    <h3>Dollars Spent: <span>${candidate.totalDollarsSpent}</span></h3>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    )
+                })}
                 </Grid>
             </Container>
         </div>

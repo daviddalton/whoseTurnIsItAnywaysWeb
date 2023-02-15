@@ -2,6 +2,8 @@ import {Candidate} from "../components/HomePage/HomePage";
 import {db} from "./firebase/firestore";
 import {
     collection,
+    setDoc,
+    doc,
     onSnapshot,
     Unsubscribe
 } from '@firebase/firestore';
@@ -12,7 +14,6 @@ export const subscribeToCandidateList = (
     return onSnapshot(collection(db, 'candidates'), (col) => {
         onChange(
             col.docs.map((doc) => {
-                console.log(doc.data())
                 const data = doc.data();
                 const id = doc.id;
                 return { id, ...data };
@@ -20,5 +21,16 @@ export const subscribeToCandidateList = (
         );
     });
 };
+
+export const increaseUserCounts = async (
+    candidate: Candidate,
+    dollarsSpent: number
+) => {
+    await setDoc(doc(db, "candidates", candidate.id as string), {
+        name: candidate.name,
+        timesPayed: candidate.timesPayed + 1,
+        totalDollarsSpent: candidate.totalDollarsSpent + dollarsSpent
+    });
+}
 
 

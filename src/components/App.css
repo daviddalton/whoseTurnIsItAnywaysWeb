@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@900&family=Ubuntu:wght@700&display=swap');
 
+
 .App {
   text-align: center;
 }
@@ -9,14 +10,37 @@
 }
 
 .title {
-  font-family: 'Ubuntu', sans-serif;
+  cursor: pointer;
 }
 
 .winner {
-  font-family: 'Ubuntu', sans-serif;
   font-size: 125px;
 }
 
 .winner-name {
   color: red;
+}
+
+.person-card {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  cursor: pointer;
+}
+
+.person-card:hover {
+  box-shadow: 0 10px 10px 5px rgba(0, 123, 255, 0.19), 0 10px 10px 5px rgba(0, 146, 205, 0.23);
+}
+
+.application-text {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.create-button {
+  cursor: pointer;
+  font-size: x-small;
+  color: navy;
+}
+
+.user-name-text {
+  color: navy;
+  font-family: 'Ubuntu', sans-serif;
 }

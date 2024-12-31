@@ -6,6 +6,7 @@ import SignInPage from "./SignInPage/SignInPage";
 import SignUpPage from "./SignUpPage/SignUpPage";
 import NavBar from "./Navigation/NavBar";
 import StillInPage from "./StillInPage/StillInPage";
+import InAMeetingPage from "./InAMeeting/InAMeetingPage";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/signIn" element={<SignInPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="/still-in" element={<StillInPage />} />
+            <Route path="/in-meeting" element={<InAMeetingPage />} />
         </Routes>
       </BrowserRouter>
   );

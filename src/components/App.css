@@ -19,6 +19,7 @@
 
 .winner-name {
   color: red;
+  cursor: pointer;
 }
 
 .person-card {
@@ -43,4 +44,13 @@
 .user-name-text {
   color: navy;
   font-family: 'Ubuntu', sans-serif;
+}
+
+.meeting-status {
+  color: red;
+  cursor: pointer;
+}
+
+.status {
+  font-size: 125px;
 }
